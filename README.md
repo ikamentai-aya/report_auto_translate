@@ -21,3 +21,6 @@ Deepl公式サイト:https://www.deepl.com/ja/pro/change-plan?cta=menu-login-sig
 実行する  
 `python app.py`  
 その後、翻訳したい論文のパスを入力する
+
+翻訳結果はコンソール上で教えてくれるパス上のテキストファイルとして保存される  
+
