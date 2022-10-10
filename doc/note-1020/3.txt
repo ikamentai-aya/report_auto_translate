@@ -1,0 +1,78 @@
+                                                                                5.1   Distribution View
+                                                                                In Distribution View (Figure 1A), users can identify the characteris-
+                                                                                tics of the overall NMT data and obtain clues about noisy parallel
+                        Brushing                                                corpora (DR1). We provide two visual components. 1) Parallel Co-
+ Brushing                                                                       ordinate Plot (PCP) to show relationships as a path between each
+            A Update Ranking View
+                                                                                metric score extracted in the preprocessing step; 2) Scatterplot with
+                                        Show hovered
+                                    B
+                                         item as path
+                                                                                two user-selected metrics for x and y axes. However, as the size
+                                                                                of parallel corpora are usually huge, visual clutter can often occur
+                                                                                in PCP. To address this problem, we combined histograms which
+                                                        C Change Weight         represent the distribution of each metrics on each axis in a different
+                                                                                color, adopting the Parallel Histogram Plot encoding scheme [3].
+                    Mouse-Hover
+                                                                                In addition, the scatterplot enables users to check the correlation
+                                                                                between two metrics in more detail. Users can select an interesting
+                                                                                range of values of a metric to filter out noise candidates by brushing
+Figure 3: Linking between Distribution View and Ranking View. (A)               on the corresponding axis. As shown in Figure 3, the selected can-
+Users can brush multiple axes on PCP to see details in Ranking View.
+                                                                                didates are shown in Ranking View to help users check the details
+(B) A mouse-hovered item will be displayed in PCP. (C) When metric
+                                                                                of metrics (DR1). Moreover, users can change the order of axes by
+weight is changed, the ranking will be updated.
+                                                                                dragging an axis over other axes. The order of axes is linked to all
+                                                                                other views such as Ranking View and Ruleset View.
+4    DATA P REPROCESSING FOR METRICS
+We prepared multiple metrics that reflect the composite quality of              5.2   Ranking View
+parallel corpora to provide a scalable overview (DR1). Interactively            The Ranking View (Figure 1B) provides detailed information such
+adjusting the weights of the metrics and checking the ranked list of            as metrics’ score and the rankings of noise candidates which are
+sentence pairs, users can effectively inspect the corpora from diverse          selected in Distribution View (DR2). Since the size of the parallel
+perspectives. The preprocessing steps to extract metrics are depicted           corpora is huge, the size of user-selected noise candidates from
+as follows.                                                                     Distribution View may still be too big to explore one by one. Thus,
+   We first extracted length ratio (target/source length) and token             we prioritize noise candidates by the weighted sum of multi-metric
+length ratio (tokenized target/source length) from parallel corpora             scores to enhance users’ cognition of noise detection [10]. Determin-
+that represent their general properties. However, these general prop-           ing rankings based on the weighted sum of multi-metric scores can
+erties cannot represent semantic similarity and may not be useful               be considered as a multi-criteria decision making (MCDM) problem.
+when the language family is different (e.g., Korean and English).               Inspired by Lineup [7], we provide a table that shows detailed in-
+To complement the limitation, we extract cosine similarity by using             formation with a slider bar for adjusting the weight for each metric.
+Universal Sentence Encoder [5] as the pre-trained encoder for en-               Once the weights are set, Ranking View calculates the weighted
+coding sentences into embedding vectors regardless of a language                sum of each candidate based on individual metric scores, then sorts
+type, hence the metric inherently supports universal languages.                 the candidates by their weighted sum (DR4). Each row of Ranking
+   Inspired by the back-translation [19], a technique providing mono-           View shows (1) A natural language form of the paired sentence, (2)
+lingual training data with a synthetic source sentence translated from          weighted sum, (3) and individual metric scores. The weighted sum
+the target sentence into the source language, we translated source              is represented as a stacked bar, and metric scores are depicted with
+and target language into target and source language, respectively,              bars in different colors. The length of the bar represents the metric
+by using Google Translation API. This enabled us to apply two                   score and the saturation of the bar shows the ranking of the sentence
+NMT evaluation metrics: 1) BLEU [16], presenting correspondence                 pair based on the corresponding metric. When users hover the mouse
+between a machine’s output and that of a human; 2) METEOR [2],                  in a row in the table, Text Compare View (Figure 1C) automatically
+based on the harmonic means of n-gram [4] precision and recall.                 moves to the part corresponding to the hovered item for details and
+Note that the back-translation result is provided in Text Compare               PCP highlights the path related to the item. By examining the candi-
+View (Section 5.3), so that the users with less expertise in either             dates, users can determine whether each candidate is an actual noise
+source or target language can also use our system (DR3).                        or not; they can save such selected candidates as a ruleset by clicking
+   In summary, the metrics provided by our system are as follows                “Save Ruleset” button. Note that when users create a ruleset, they
+: Cosine Similarity (between source & target sentences, between                 should designate the color and the name of the ruleset.
+source & back-translated target sentences, between target & back-
+translated source sentences), Length Ratio, Token Length Ratio,                 5.3   Text Compare View
+BLEU, and METEOR. The overall pipeline of our preprocessing is                  Although diverse evaluation metrics are provided in our system, the
+shown in Figure 2.                                                              metrics may not fully reflect the actual quality of parallel corpora.
+                                                                                It is thus necessary for users to examine the raw text of the parallel
+5    V ISUALIZATION D ESIGN                                                     corpora. Since our design requirements considers users who are not
+                                                                                literate in one of the source or target languages (DR3), Text Compare
+We developed VANT, an interactive visualization system to fulfill               View (Figure 1C) offers three language selection options: source,
+the formulated design requirements. As shown in Figure 1, the                   target, and source ↔ target. If users select either source or
+system consists of four views: Distribution View, Ranking View,                 target, the view depicts source sentence and back-translated target
+Text Compare View, and Ruleset View. The general sequence of                    sentence, or target sentence and back-translated source sentence,
+using the system is as follows. First, select noise candidates within           respectively. When users select source ↔ target option, the view
+parallel corpora based on metric scores using Distribution View.                shows source and target sentence. If users select source or target
+Second, check the details of the selected candidates using Ranking              option, the system represents the similarity between two sentences by
+View and Text Compare View. Third, select the actual noisy sentence             depicting n-gram matching, so that users can more readily identify
+pairs by checking them in Ranking View and save them as a ruleset.              the commonalities and differences between two sentences. Com-
+Finally, analyze the pattern of the actual noisy sentence pairs in              mon unigram, bigram, 3-gram and 4-gram within two sentences are
+Ruleset View.                                                                   highlighted with different text background colors.
+
+
+                                                                          183
+

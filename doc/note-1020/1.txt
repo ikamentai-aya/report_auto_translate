@@ -1,0 +1,52 @@
+                                        2022 IEEE 15th Pacific Visualization Symposium (PacificVis)
+
+
+
+             VANT : A Visual Analytics System for Refining Parallel Corpora
+                             in Neural Machine Translation
+                                   Sebeom Park1 2 * Soohyun Lee1 † Youngtaek Kim2 ‡ Hyeon Jeon1 §
+                                          Seokweon Jung1 ¶ Jinwook Bok1 || Jinwook Seo1 **
+                                                 1 Seoul National University, Seoul, Republic of Korea
+                                                   2 Samsung Electronics, Seoul, Republic of Korea
+
+
+
+
+         Figure 1: Overview of VANT. (A) Distribution View shows the distribution of different metrics related to the quality of parallel corpora
+         for training a Neural Machine Translation (NMT) model. Users can identify low-quality candidate pairs (i.e., sentence pairs having
+         low metric scores) as noise candidates, which negatively affect the model performance. (B) Ranking View depicts the ranking of
+         noise candidates determined by a user-steerable weighted sum of metrics. Users can select and save a subset of candidates as a
+         ruleset for refinement. (C) Text Compare View allows users to visually inspect noisy parallel corpora in their natural language form.
+         (D) Ruleset View depicts detailed information of the selected rulesets (e.g., average metric scores, the number of common items
+         between rulesets), so that users can analyze the status and pattern of rulesets.
+
+  A BSTRACT                                                                      by providing diverse quality metrics (e.g., cosine similarity, BLEU,
+                                                                                 length ratio) and (2) allowing users to visually examine and manage
+  The quality of parallel corpora used to train a Neural Machine Trans-
+                                                                                 the corpora based on the pre-computed metrics scores. Our system’s
+  lation (NMT) model can critically influence the model’s perfor-
+                                                                                 effectiveness and usefulness are demonstrated through a qualitative
+  mance. Various approaches for refining parallel corpora have been
+                                                                                 user study with eight participants, including four domain experts
+  introduced, but there is still much room for improvements, such as
+                                                                                 with real-world datasets.
+  enhancing the efficiency and the quality of refinement. We intro-
+  duce VANT, a novel visual analytics system for refining parallel               Index Terms: Human-centered computing—Visualization—
+  corpora used in training an NMT model. Our system helps users                  Visualization system and tools—Visualization toolkits; Com-
+  to readily detect and filter noisy parallel corpora by (1) aiding the          puting methodologies—Artificial intelligence—Natural language
+  quality estimation of individual sentence pairs within the corpora             processing—Machine translation
+
+     * e-mail: spark@hcil.snu.ac.kr, sebeom.park@samsung.com
+     † e-mail: shlee@hcil.snu.ac.kr                                              1   I NTRODUCTION
+     ‡ e-mail: ytaek.kim@samsung.com                                             Training Neural Machine Translation (NMT) models requires paral-
+     § e-mail: hj@hcil.snu.ac.kr                                                 lel corpora, a set of sentence pairs translated into different languages.
+     ¶ e-mail: swjung@hcil.snu.ac.kr
+                                                                                 In general, parallel corpora are crawled from the web and digitized
+     || e-mail: bok@hcil.snu.ac.kr
+                                                                                 books, which often ends up with noisy parallel corpora. Such noisy
+    ** e-mail: jseo@snu.ac.kr                                                    corpora could lead to mistranslation [9]. Since the quality of the
+
+
+2165-8773/22/$31.00 ©2022 IEEE                                             181
+DOI 10.1109/PacificVis53943.2022.00029
+

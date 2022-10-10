@@ -1,0 +1,80 @@
+identify noise patterns. In addition, most participants (E1, E2, and S1–         R EFERENCES
+S4) expected that our back-translation technique in Text Compare                  [1] F. Bane and A. Zaretskaya. Selecting the best data filtering method for
+View would reduce the time-cost for the inspection of noisy parallel                  nmt training. In Proceedings of Machine Translation Summit XVIII:
+corpora when handling illiterate language data. Furthermore, they                     Users and Providers Track, pp. 89–97, 2021.
+said our system would be beneficial in the field. E1, E2, and E4                  [2] S. Banerjee and A. Lavie. Meteor: An automatic metric for mt evalua-
+asked about a plan to deploy our system as a real-world application.                  tion with improved correlation with human judgments. In Proceedings
+   The participants also provided suggestions for further enhance-                    of the acl workshop on intrinsic and extrinsic evaluation measures for
+ment of our system. For example, E3 and E4 suggested adding and                       machine translation and/or summarization, pp. 65–72, 2005.
+hiding metrics for customization. They wanted to see how noise data               [3] J. Bok, B. Kim, and J. Seo. Augmenting parallel coordinates plots with
+affects other metrics such as ROGUE and Perplexity, practically                       color-coded stacked histograms. IEEE Transactions on Visualization
+used in their actual field of work. Non-domain experts (S1, S2, S3)                   and Computer Graphics, 2020.
+said it was challenging to use adjustable weights in Ranking view                 [4] W. B. Cavnar, J. M. Trenkle, et al. N-gram-based text categorization.
+                                                                                      In Proceedings of SDAIR-94, 3rd annual symposium on document
+and Ruleset Relationship View without a detailed explanation of
+                                                                                      analysis and information retrieval, vol. 161175. Citeseer, 1994.
+their purpose. Lastly, most participants commented on improving the
+                                                                                  [5] D. Cer, Y. Yang, S. yi Kong, N. Hua, N. Limtiaco, R. S. John, N. Con-
+usability of Text Compare View; they argued that the relatively small                 stant, M. Guajardo-Cespedes, S. Yuan, C. Tar, Y.-H. Sung, B. Strope,
+size of the view makes it hard to use. They propose to add “expand”                   and R. Kurzweil. Universal sentence encoder, 2018.
+function that can dynamically increase its size for better perception             [6] V. Dibia and Ç. Demiralp. Data2vis: Automatic generation of data
+since the view is the most frequently used while inspecting noisy                     visualizations using sequence-to-sequence recurrent neural networks.
+parallel corpora.                                                                     IEEE computer graphics and applications, 39(5):33–46, 2019.
+                                                                                  [7] S. Gratzl, A. Lex, N. Gehlenborg, H. Pfister, and M. Streit. Lineup:
+                                                                                      Visual analysis of multi-attribute rankings. IEEE transactions on
+7   D ISCUSSION AND F UTURE W ORK                                                     visualization and computer graphics, 19(12):2277–2286, 2013.
+                                                                                  [8] S. Kandel, A. Paepcke, J. Hellerstein, and J. Heer. Wrangler: Interactive
+Extensibility As suggested in the feedback from domain experts, it
+                                                                                      visual specification of data transformation scripts. In Proceedings of
+can be helpful to add additional metrics. In our system, nine metrics
+                                                                                      the SIGCHI Conference on Human Factors in Computing Systems, pp.
+are encoded in distinct colors. Adding more metrics could hinder                      3363–3372, 2011.
+users from effectively distinguishing colors [14]. Additionally, the              [9] H. Khayrallah and P. Koehn. On the impact of various types of noise
+scroll interaction would be required as more columns are added in                     on neural machine translation. arXiv preprint arXiv:1805.12282, 2018.
+Ranking View. Thus, we plan to provide a customization option so                 [10] Y. Kim, H. Jeon, Y.-H. Kim, Y. Ki, H. Song, and J. Seo. Visualization
+that users can select a small number of metrics of their interest to                  support for multi-criteria decision making in software issue propagation.
+configure a layout accordingly.                                                       In 2021 IEEE 14th Pacific Visualization Symposium (PacificVis), pp.
+Reliability of pre-trained model The universal sentence encoder,                      81–85. IEEE, 2021.
+which we used for sentence embedding in the preprocessing step,                  [11] P. Koehn, H. Hoang, A. Birch, C. Callison-Burch, M. Federico,
+is widely known for its good performance [5]. However, if the en-                     N. Bertoldi, B. Cowan, W. Shen, C. Moran, R. Zens, et al. Moses: Open
+                                                                                      source toolkit for statistical machine translation. In Proceedings of the
+coder has not learned a specific word or character in advance, the
+                                                                                      45th annual meeting of the association for computational linguistics
+embedded vector may not have semantic meaning. Also, Google
+                                                                                      companion volume proceedings of the demo and poster sessions, pp.
+Translation used in our back-translation may mistranslate a sentence.                 177–180, 2007.
+Therefore, users should be aware of such reliability limitations.                [12] P. Koehn, H. Khayrallah, K. Heafield, and M. L. Forcada. Findings of
+Scalability Generally, NMT training requires a very large size of                     the WMT 2018 shared task on parallel corpus filtering. In Proceedings
+data, but our system may cause low latency while handling a huge                      of the Third Conference on Machine Translation: Shared Task Papers,
+amount of data due to the performance issue; especially when users                    pp. 726–739. Association for Computational Linguistics, Belgium,
+brush subset from PCP in Distribution View and adjust weight in                       Brussels, Oct. 2018. doi: 10.18653/v1/W18-6453
+Ranking View. Although we tested our system was able to cover                    [13] T. Munz, D. Väth, P. Kuznecov, T. Vu, and D. Weiskopf. Visual-
+100,000 size of parallel corpora, we should consider improving the                    interactive neural machine translation. In Graphics Interface 2021,
+performance of our system by serving back-end server for updating                     2021.
+Ranking View.                                                                    [14] T. Munzner. Visualization analysis and design. CRC press, 2014.
+                                                                                 [15] M. Neves, A. J. Yepes, and A. Névéol. The scielo corpus: a parallel
+                                                                                      corpus of scientific publications for biomedicine. In Proceedings of the
+8   C ONCLUSION                                                                       Tenth International Conference on Language Resources and Evaluation
+                                                                                      (LREC’16), pp. 2942–2948, 2016.
+We propose VANT, an interactive visual analytic system that as-                  [16] K. Papineni, S. Roukos, T. Ward, and W.-J. Zhu. Bleu: a method for
+sists users in exploring NMT data for detecting noise and refining                    automatic evaluation of machine translation. In Proceedings of the
+parallel corpora. We derived various quality metrics based on ma-                     40th annual meeting of the Association for Computational Linguistics,
+chine learning techniques. The user study demonstrated its useful-                    pp. 311–318, 2002.
+ness and effectiveness by showing that users can readily investigate             [17] J. Park, J.-P. Hong, and J.-W. Cha. Korean language resources for ev-
+and filter noisy sentence pairs within the corpora. We anticipate                     eryone. In Proceedings of the 30th Pacific Asia conference on language,
+that users will be able to improve the quality of parallel corpora                    information and computation: Oral Papers, pp. 49–58, 2016.
+with our system and achieve a better performance of their own                    [18] M. Rikters, M. Fishel, and O. Bojar. Visualizing neural machine trans-
+NMT model. The implementation of our system is available at                           lation attention and confidence. The Prague Bulletin of Mathematical
+https://vant-web.github.io/demo/.                                                     Linguistics, 109(1):39, 2017.
+                                                                                 [19] R. Sennrich, B. Haddow, and A. Birch. Improving neural machine trans-
+                                                                                      lation models with monolingual data. arXiv preprint arXiv:1511.06709,
+ACKNOWLEDGMENTS                                                                       2015.
+                                                                                 [20] G. Xu, Y. Ko, and J. Seo. Improving neural machine translation by
+The authors wish to thank Soyoung Eom for heartful support. This                      filtering synthetic parallel data. Entropy, 21(12):1213, 2019.
+work was supported by the National Research Foundation of Korea                  [21] B. Zhang, A. Nagesh, and K. Knight. Parallel corpus filtering via
+(NRF) grant funded by the Korea government (MSIT) (No. NRF-                           pre-trained language models. arXiv preprint arXiv:2005.06166, 2020.
+2019R1A2C208906213) , and in part by Samsung Electronics.
+
+
+                                                                           185
+
