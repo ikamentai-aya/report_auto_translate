@@ -13,7 +13,7 @@ with open(pickle_save_path, mode='rb') as f:
 
 ## 英語の翻訳
 translate_content = []
-API_KEY = 'bfc6a8ca-e35f-2062-627b-7466d6c3d5fa:fx' # 自身の API キーを指定
+API_KEY = '????' # 自身の API キーを指定
 source_lang = 'EN'
 target_lang = 'JA'
 
